@@ -1,0 +1,24 @@
+{
+    "title": "檢查結果及說明",
+    "description": "請下方填入檢查報告",
+    "type": "object",
+    "radio": {
+        "type": "boolean",
+        "title": "脂肪肝",
+        "description": "This is the radio-description",
+        "enum": [
+            {
+                "key": 1,
+                "value": "輕度"
+            },
+            {
+                "key": 2,
+                "value": "中度"
+            },
+            {
+                "key": 3,
+                "value": "重度"
+            }
+        ]
+    }
+}
