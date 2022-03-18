@@ -1,5 +1,5 @@
-const FormData = [
-    {
+export const FormData = {
+    Liver: {
         name: "liver",
         label: "肝臟",
         content: {
@@ -15,9 +15,9 @@ const FormData = [
             HEPU: null, //肝腫瘤(性質不明) null無,left左葉,right右葉
         },
     },
-];
+};
 
-const LiveColumns = [
+export const LiveColumns = [
     {
         name: "liver",
         label: "肝臟",
