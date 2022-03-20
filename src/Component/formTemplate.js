@@ -1,6 +1,6 @@
 export const formTemplate = [
     {
-        name: "liver",
+        name: "Liver",
         title: "肝臟",
         fields: [
             {

@@ -1,14 +1,14 @@
 import { Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
+import { FormData } from "../FormContent";
 
 const FormContent = (props) => {
-    const [formJson, setFormJson] = useState({});
-
-    console.log(props.formTemplate);
+    const formJson = FormData;
 
     const formTemplate = () => {
         return props.formTemplate.map((formTemplate) => {
             const { title, name, fields } = formTemplate;
+
             const renderFields = (fields) => {
                 return fields.map((field) => {
                     let { title, type, name, options } = field;
@@ -59,7 +59,11 @@ const FormContent = (props) => {
                             return (
                                 <div key={name}>
                                     <label htmlFor={name}>{title}</label>
-                                    <input type="checkbox" id="cbox1" value="first_checkbox"/>
+                                    <input
+                                        type="checkbox"
+                                        id="cbox1"
+                                        value="first_checkbox"
+                                    />
                                 </div>
                             );
                         default:
@@ -73,6 +77,7 @@ const FormContent = (props) => {
                     }
                 });
             };
+
             return (
                 <div>
                     <h2>{title}</h2>
@@ -83,8 +88,8 @@ const FormContent = (props) => {
     };
 
     return (
-        <div>
-            <form>
+        <div width="100%">
+            <form width="100%">
                 {formTemplate()}
                 <Button
                     className="btn"

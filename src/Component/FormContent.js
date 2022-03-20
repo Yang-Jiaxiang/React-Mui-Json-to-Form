@@ -1,6 +1,6 @@
 export const FormData = {
     Liver: {
-        name: "liver",
+        name: "Liver",
         label: "肝臟",
         content: {
             normal: false, //正常 Boolean
