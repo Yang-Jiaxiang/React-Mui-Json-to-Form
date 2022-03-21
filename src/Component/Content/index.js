@@ -1,4 +1,5 @@
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import React, { useState, useEffect } from "react";
 import { FormData } from "../FormContent";
 import "./style.css";
@@ -26,10 +27,6 @@ const FormContent = (props) => {
                         case "text":
                             return (
                                 <div key={name}>
-                                    {console.log(formJson)}
-                                    {
-                                        //formJson[formTemplate.name]                                                    .content[name]
-                                    }
                                     <label htmlFor={name}>{title}</label>
                                     <input
                                         type="text"
@@ -91,11 +88,15 @@ const FormContent = (props) => {
                                             </>
                                         );
                                     })}
-                                    <input
-                                        type="button"
+
+                                    <IconButton
+                                        color="primary"
+                                        aria-label="upload picture"
+                                        component="span"
                                         onClick={() => clearRadioButtons(name)}
-                                        value="Clear"
-                                    />
+                                    >
+                                        <DeleteIcon />
+                                    </IconButton>
                                 </div>
                             );
 
