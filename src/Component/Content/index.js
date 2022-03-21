@@ -1,4 +1,4 @@
-import { Button, IconButton } from "@mui/material";
+import { Button, IconButton,Checkbox } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import React, { useState, useEffect } from "react";
 import { FormData } from "../FormContent";
@@ -104,8 +104,7 @@ const FormContent = (props) => {
                             return (
                                 <div key={name}>
                                     <label htmlFor={name}>{title}</label>
-                                    <input
-                                        type="checkbox"
+                                    <Checkbox
                                         id="cbox1"
                                         value={name}
                                         defaultChecked={
