@@ -1,8 +1,8 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import {OrganList} from "./OrganList";
+import { ListItem, ListItemText, Link } from "@mui/material";
+import { OrganList } from "./OrganList";
 
 const NabBar = () => {
     return (
@@ -17,9 +17,17 @@ const NabBar = () => {
             >
                 <List>
                     {OrganList.map((item, index) => (
-                        <ListItem button key={index}>
-                            {item.value}
-                        </ListItem>
+                        <Link
+                            href={item.link}
+                            underline='none'
+                            color='black'
+                        >
+                            <ListItem button key={index}>
+                                <ListItemText
+                                    primary={item.value}
+                                ></ListItemText>
+                            </ListItem>
+                        </Link>
                     ))}
                 </List>
             </Box>

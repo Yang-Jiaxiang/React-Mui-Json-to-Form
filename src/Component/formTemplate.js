@@ -70,8 +70,8 @@ export const formTemplate = [
             },
             {
                 name: "Other",
-                title: "其他",
-                type: "text",
+                title: "其他：",
+                type: "Textarea",
             },
         ],
     },
@@ -99,8 +99,8 @@ export const formTemplate = [
             },
             {
                 name: "Other",
-                title: "其他",
-                type: "text",
+                title: "其他：",
+                type: "Textarea",
             },
         ],
     },
@@ -137,8 +137,8 @@ export const formTemplate = [
             },
             {
                 name: "Other",
-                title: "其他",
-                type: "text",
+                title: "其他：",
+                type: "Textarea",
             },
         ],
     },
@@ -148,8 +148,8 @@ export const formTemplate = [
         fields: [
             {
                 name: "Other",
-                title: "其他",
-                type: "text",
+                title: "其他：",
+                type: "Textarea",
             },
         ],
     },
@@ -164,8 +164,8 @@ export const formTemplate = [
             },
             {
                 name: "Other",
-                title: "其他",
-                type: "text",
+                title: "其他：",
+                type: "Textarea",
             },
         ],
     },

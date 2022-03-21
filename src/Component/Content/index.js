@@ -1,6 +1,14 @@
-import { Button, IconButton,Checkbox } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import React, { useState, useEffect } from "react";
+import {
+    Button,
+    Checkbox,
+    FormLabel,
+    Radio,
+    RadioGroup,
+    FormControlLabel,
+    TextareaAutosize,
+} from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
+import React, { useState } from "react";
 import { FormData } from "../FormContent";
 import "./style.css";
 const FormContent = (props) => {
@@ -14,110 +22,236 @@ const FormContent = (props) => {
                 return fields.map((field) => {
                     let { title, type, name, options } = field;
 
-                    function clearRadioButtons(name) {
-                        var radioButtonArray = document.getElementsByName(name);
-
-                        for (var i = 0; i < radioButtonArray.length; i++) {
-                            var radioButton = radioButtonArray[i];
-                            radioButton.checked = false;
-                        }
-                    }
-
                     switch (type) {
                         case "text":
                             return (
                                 <div key={name}>
-                                    <label htmlFor={name}>{title}</label>
-                                    <input
-                                        type="text"
-                                        onChange={(event) => {
-                                            setFormJson({
-                                                ...formJson,
-                                                [formTemplate.name]: {
-                                                    ...formJson[
-                                                        formTemplate.name
-                                                    ],
-                                                    content: {
-                                                        ...formJson[
-                                                            formTemplate.name
-                                                        ].content,
-                                                        [name]: event.target
-                                                            .value,
-                                                    },
-                                                },
-                                            });
-                                        }}
-                                        value={
-                                            formJson[formTemplate.name].content[
-                                                name
-                                            ]
-                                        }
-                                    />
+                                    <table width="100%">
+                                        <td width="30%">
+                                            <FormLabel
+                                                sx={{
+                                                    color: "black",
+                                                    fontWeight: "bold",
+                                                    fontSize: 16,
+                                                }}
+                                            >
+                                                {title}
+                                            </FormLabel>
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="text"
+                                                onChange={(event) => {
+                                                    setFormJson({
+                                                        ...formJson,
+                                                        [formTemplate.name]: {
+                                                            ...formJson[
+                                                                formTemplate
+                                                                    .name
+                                                            ],
+                                                            content: {
+                                                                ...formJson[
+                                                                    formTemplate
+                                                                        .name
+                                                                ].content,
+                                                                [name]: event
+                                                                    .target
+                                                                    .value,
+                                                            },
+                                                        },
+                                                    });
+                                                }}
+                                                value={
+                                                    formJson[formTemplate.name]
+                                                        .content[name]
+                                                }
+                                            />
+                                        </td>
+                                    </table>
                                 </div>
                             );
 
                         case "radio":
                             return (
                                 <div key={name}>
-                                    <label htmlFor={name}>{title}</label>
-                                    {options.map((option) => {
-                                        return (
-                                            <>
-                                                <input
-                                                    type="radio"
-                                                    name={name}
-                                                    value={option.value}
-                                                    defaultChecked={
-                                                        formJson[
-                                                            formTemplate.name
-                                                        ].content[name] ===
-                                                        option.value
-                                                            ? true
-                                                            : false
-                                                    }
-                                                    onClick={(event) => {
-                                                        {
-                                                            formJson[
-                                                                formTemplate.name
-                                                            ].content[name] =
-                                                                event.target.value;
-                                                        }
-                                                    }}
-                                                />
-                                                {option.label}
-                                            </>
-                                        );
-                                    })}
-
-                                    <IconButton
-                                        color="primary"
-                                        aria-label="upload picture"
-                                        component="span"
-                                        onClick={() => clearRadioButtons(name)}
-                                    >
-                                        <DeleteIcon />
-                                    </IconButton>
+                                    <table width="100%">
+                                        <td width="30%">
+                                            <FormLabel
+                                                row
+                                                sx={{
+                                                    color: "black",
+                                                    fontWeight: "bold",
+                                                    fontSize: 16,
+                                                }}
+                                            >
+                                                {title}
+                                            </FormLabel>
+                                        </td>
+                                        <td>
+                                            <RadioGroup
+                                                row
+                                                value={
+                                                    formJson[formTemplate.name]
+                                                        .content[name]
+                                                }
+                                                style={{ marginLeft: "10px" }}
+                                            >
+                                                {options.map((option) => {
+                                                    return (
+                                                        <FormControlLabel
+                                                            value={option.value}
+                                                            control={<Radio />}
+                                                            label={option.label}
+                                                            onClick={(
+                                                                event
+                                                            ) => {
+                                                                if (
+                                                                    event.target
+                                                                        .value ===
+                                                                    formJson[
+                                                                        formTemplate
+                                                                            .name
+                                                                    ].content[
+                                                                        name
+                                                                    ]
+                                                                ) {
+                                                                    setFormJson(
+                                                                        {
+                                                                            ...formJson,
+                                                                            [formTemplate.name]:
+                                                                                {
+                                                                                    ...formJson[
+                                                                                        formTemplate
+                                                                                            .name
+                                                                                    ],
+                                                                                    content:
+                                                                                        {
+                                                                                            ...formJson[
+                                                                                                formTemplate
+                                                                                                    .name
+                                                                                            ]
+                                                                                                .content,
+                                                                                            [name]: null,
+                                                                                        },
+                                                                                },
+                                                                        }
+                                                                    );
+                                                                } else {
+                                                                    setFormJson(
+                                                                        {
+                                                                            ...formJson,
+                                                                            [formTemplate.name]:
+                                                                                {
+                                                                                    ...formJson[
+                                                                                        formTemplate
+                                                                                            .name
+                                                                                    ],
+                                                                                    content:
+                                                                                        {
+                                                                                            ...formJson[
+                                                                                                formTemplate
+                                                                                                    .name
+                                                                                            ]
+                                                                                                .content,
+                                                                                            [name]: event
+                                                                                                .target
+                                                                                                .value,
+                                                                                        },
+                                                                                },
+                                                                        }
+                                                                    );
+                                                                }
+                                                            }}
+                                                        />
+                                                    );
+                                                })}
+                                            </RadioGroup>
+                                        </td>
+                                    </table>
                                 </div>
                             );
 
                         case "checkbox":
                             return (
                                 <div key={name}>
-                                    <label htmlFor={name}>{title}</label>
-                                    <Checkbox
-                                        id="cbox1"
-                                        value={name}
-                                        defaultChecked={
-                                            formJson[formTemplate.name].content[
-                                                name
-                                            ]
-                                        }
-                                        onClick={(event) => {
-                                            formJson[formTemplate.name].content[
-                                                name
-                                            ] = event.target.checked;
-                                        }}
-                                    />
+                                    <table width="100%">
+                                        <td width="30%">
+                                            <FormLabel
+                                                sx={{
+                                                    color: "black",
+                                                    fontWeight: "bold",
+                                                    fontSize: 16,
+                                                }}
+                                            >
+                                                {title}
+                                            </FormLabel>
+                                        </td>
+                                        <td>
+                                            <Checkbox
+                                                id="cbox1"
+                                                value={name}
+                                                defaultChecked={
+                                                    formJson[formTemplate.name]
+                                                        .content[name]
+                                                }
+                                                onClick={(event) => {
+                                                    formJson[
+                                                        formTemplate.name
+                                                    ].content[name] =
+                                                        event.target.checked;
+                                                }}
+                                            />
+                                        </td>
+                                    </table>
+                                </div>
+                            );
+
+                        case "Textarea":
+                            return (
+                                <div key={name}>
+                                    <table width="100%">
+                                        <td width="30%">
+                                            <FormLabel
+                                                sx={{
+                                                    color: "black",
+                                                    fontWeight: "bold",
+                                                    fontSize: 16,
+                                                }}
+                                            >
+                                                {title}
+                                            </FormLabel>
+                                        </td>
+                                        <td>
+                                            <TextareaAutosize
+                                                minRows={4}
+                                                style={{ width: "90%" }}
+                                                onChange={(event) => {
+                                                    setFormJson({
+                                                        ...formJson,
+                                                        [formTemplate.name]: {
+                                                            ...formJson[
+                                                                formTemplate
+                                                                    .name
+                                                            ],
+                                                            content: {
+                                                                ...formJson[
+                                                                    formTemplate
+                                                                        .name
+                                                                ].content,
+                                                                [name]: event
+                                                                    .target
+                                                                    .value,
+                                                            },
+                                                        },
+                                                    });
+                                                }}
+                                                value={
+                                                    formJson[formTemplate.name]
+                                                        .content[name]
+                                                }
+                                            />
+                                        </td>
+                                    </table>
                                 </div>
                             );
 
@@ -132,11 +266,20 @@ const FormContent = (props) => {
                     }
                 });
             };
-
             return (
-                <div>
-                    <h2>{title}</h2>
-                    {renderFields(fields)}
+                <div style={{ marginTop: "30px" }} id={name}>
+                    <FormLabel
+                        sx={{
+                            color: "#3f50b5",
+                            fontWeight: "bold",
+                            fontSize: 24,
+                        }}
+                    >
+                        {title}
+                    </FormLabel>
+                    <div>
+                        <table width="100%">{renderFields(fields)}</table>
+                    </div>
                 </div>
             );
         });
@@ -147,12 +290,15 @@ const FormContent = (props) => {
             <form>
                 {formTemplate()}
                 <Button
+                    variant="contained"
+                    endIcon={<SendIcon />}
                     className="btn"
                     onClick={() => {
                         console.log(formJson);
                     }}
+                    style={{ float: "right", margin: "10px" }}
                 >
-                    Submit
+                    儲存
                 </Button>
             </form>
         </div>
