@@ -1,9 +1,9 @@
 import { Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { FormData } from "../FormContent";
-
+import "./style.css";
 const FormContent = (props) => {
-    const formJson = FormData;
+    const [formJson, setFormJson] = useState(FormData);
 
     const formTemplate = () => {
         return props.formTemplate.map((formTemplate) => {
@@ -26,8 +26,36 @@ const FormContent = (props) => {
                         case "text":
                             return (
                                 <div key={name}>
+                                    {console.log(formJson)}
+                                    {
+                                        //formJson[formTemplate.name]                                                    .content[name]
+                                    }
                                     <label htmlFor={name}>{title}</label>
-                                    <input type="text" />
+                                    <input
+                                        type="text"
+                                        onChange={(event) => {
+                                            setFormJson({
+                                                ...formJson,
+                                                [formTemplate.name]: {
+                                                    ...formJson[
+                                                        formTemplate.name
+                                                    ],
+                                                    content: {
+                                                        ...formJson[
+                                                            formTemplate.name
+                                                        ].content,
+                                                        [name]: event.target
+                                                            .value,
+                                                    },
+                                                },
+                                            });
+                                        }}
+                                        value={
+                                            formJson[formTemplate.name].content[
+                                                name
+                                            ]
+                                        }
+                                    />
                                 </div>
                             );
 
@@ -42,6 +70,22 @@ const FormContent = (props) => {
                                                     type="radio"
                                                     name={name}
                                                     value={option.value}
+                                                    defaultChecked={
+                                                        formJson[
+                                                            formTemplate.name
+                                                        ].content[name] ===
+                                                        option.value
+                                                            ? true
+                                                            : false
+                                                    }
+                                                    onClick={(event) => {
+                                                        {
+                                                            formJson[
+                                                                formTemplate.name
+                                                            ].content[name] =
+                                                                event.target.value;
+                                                        }
+                                                    }}
                                                 />
                                                 {option.label}
                                             </>
@@ -62,10 +106,21 @@ const FormContent = (props) => {
                                     <input
                                         type="checkbox"
                                         id="cbox1"
-                                        value="first_checkbox"
+                                        value={name}
+                                        defaultChecked={
+                                            formJson[formTemplate.name].content[
+                                                name
+                                            ]
+                                        }
+                                        onClick={(event) => {
+                                            formJson[formTemplate.name].content[
+                                                name
+                                            ] = event.target.checked;
+                                        }}
                                     />
                                 </div>
                             );
+
                         default:
                             return (
                                 <div>
@@ -89,7 +144,7 @@ const FormContent = (props) => {
 
     return (
         <div width="100%">
-            <form width="100%">
+            <form>
                 {formTemplate()}
                 <Button
                     className="btn"

@@ -69,25 +69,103 @@ export const formTemplate = [
                 ],
             },
             {
-                name: "other",
+                name: "Other",
                 title: "其他",
                 type: "text",
             },
         ],
     },
     {
-        name: "鮭魚",
-        title: "鮭魚",
+        name: "Gallbladder",
+        title: "膽囊",
         fields: [
             {
-                title: "脂肪肝",
+                name: "Gallstones",
+                title: "膽結石",
                 type: "radio",
-                name: "FLD",
                 options: [
-                    { label: "輕度", value: 1 },
-                    { label: "中度", value: 2 },
-                    { label: "重度", value: 3 },
+                    { label: "單一", value: "Single" },
+                    { label: "多發", value: "Many" },
                 ],
+            },
+            {
+                name: "GallbladderPolyp",
+                title: "膽息肉",
+                type: "radio",
+                options: [
+                    { label: "單一", value: "Single" },
+                    { label: "多發", value: "Many" },
+                ],
+            },
+            {
+                name: "Other",
+                title: "其他",
+                type: "text",
+            },
+        ],
+    },
+    {
+        name: "Kidney",
+        title: "腎臟",
+        fields: [
+            {
+                name: "KidneyStones",
+                title: "腎結石",
+                type: "radio",
+                options: [
+                    { label: "左腎", value: "Left" },
+                    { label: "右腎", value: "Right" },
+                ],
+            },
+            {
+                name: "RenalCyst",
+                title: "腎囊腫",
+                type: "radio",
+                options: [
+                    { label: "左腎", value: "Left" },
+                    { label: "右腎", value: "Right" },
+                ],
+            },
+            {
+                name: "KidneyCancer",
+                title: "腎腫瘤",
+                type: "radio",
+                options: [
+                    { label: "左腎", value: "Left" },
+                    { label: "右腎", value: "Right" },
+                ],
+            },
+            {
+                name: "Other",
+                title: "其他",
+                type: "text",
+            },
+        ],
+    },
+    {
+        name: "Pancreas",
+        title: "胰臟",
+        fields: [
+            {
+                name: "Other",
+                title: "其他",
+                type: "text",
+            },
+        ],
+    },
+    {
+        name: "Spleen",
+        title: "脾臟",
+        fields: [
+            {
+                title: "脾臟腫大",
+                type: "checkbox",
+                name: "Splenomegaly",
+            },
+            {
+                name: "Other",
+                title: "其他",
+                type: "text",
             },
         ],
     },
