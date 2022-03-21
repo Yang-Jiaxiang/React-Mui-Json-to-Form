@@ -1,7 +1,7 @@
 import NavBar from "./Component/NavBar";
 import FormContent from "./Component/Content/index";
 import { Grid } from "@mui/material";
-import {formTemplate} from "./Component/formTemplate"
+import { formTemplate } from "./Component/formTemplate";
 
 function App() {
     return (

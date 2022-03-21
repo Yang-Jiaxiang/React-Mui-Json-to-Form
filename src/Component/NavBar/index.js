@@ -7,7 +7,7 @@ import { OrganList } from "./OrganList";
 const NabBar = () => {
     return (
         <Box>
-            <Box
+            <Box 
                 sx={{
                     bgcolor: "background.paper",
                     mt: 1,
@@ -15,13 +15,9 @@ const NabBar = () => {
                 component="nav"
                 aria-label="mailbox folders"
             >
-                <List>
+                <List >
                     {OrganList.map((item, index) => (
-                        <Link
-                            href={item.link}
-                            underline='none'
-                            color='black'
-                        >
+                        <Link href={item.link} underline="none" color="black">
                             <ListItem button key={index}>
                                 <ListItemText
                                     primary={item.value}
